@@ -1,5 +1,7 @@
-#include "Vec2D.h"
 #include <SDL.h>
+#include "Vec2D.h"
+#include "Color.h"
+
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
@@ -26,7 +28,12 @@ int main(int argc, char* argv[])
 
 	SDL_Surface* noptrWindowSurface = SDL_GetWindowSurface(optrWindow);
 
-	uint32_t color = 0xFF0000;
+	SDL_PixelFormat* pixelFormat = noptrWindowSurface->format;
+
+	Color::InitColorFormat(pixelFormat);
+
+	SetPixel(noptrWindowSurface, Color::Orange().GetPixelColor(), SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
 	SDL_UpdateWindowSurface(optrWindow);
 
 	SDL_Event sdlEvent;
