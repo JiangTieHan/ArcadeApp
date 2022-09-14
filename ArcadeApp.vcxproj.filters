@@ -24,6 +24,9 @@
     <ClInclude Include="src\Graphic\Color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Graphic\ScreenBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Vec2D.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphic\ScreenBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
