@@ -42,6 +42,9 @@
     <ClInclude Include="src\Shapes\AARectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shapes\Circle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Vec2D.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Shapes\AARectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shapes\Circle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
