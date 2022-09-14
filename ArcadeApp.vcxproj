@@ -35,6 +35,7 @@
     <ClCompile Include="src\Graphics\ScreenBuffer.cpp" />
     <ClCompile Include="src\Shapes\Line2D.cpp" />
     <ClCompile Include="src\Shapes\Shape.cpp" />
+    <ClCompile Include="src\Shapes\Triangle.cpp" />
     <ClCompile Include="src\Utils\Utils.cpp" />
     <ClCompile Include="src\Utils\Vec2D.cpp" />
   </ItemGroup>
