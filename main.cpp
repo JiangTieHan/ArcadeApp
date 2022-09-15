@@ -1,6 +1,9 @@
 #include <SDL.h>
 #include "Screen.h";
 #include "Line2D.h"
+#include "Triangle.h"
+#include "AARectangle.h"
+#include "Circle.h"
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
@@ -10,9 +13,9 @@ int main(int argc, char* argv[])
 {
 	Screen theScreen;
 	theScreen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
-	Line2D line = { Vec2D(0,0), Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT) };
-	theScreen.Draw(line, Color::White());
-	//theScreen.Draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, Color::Yellow());
+
+	Circle circle(Vec2D(theScreen.Width() / 2.0f, theScreen.Height() / 2.0f), 50.0f);
+	theScreen.Draw(circle, Color::Pink());
 	theScreen.SwapScreen();
 
 	SDL_Event sdlEvent;
@@ -33,6 +36,5 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-
 	return 0;
 }
