@@ -10,6 +10,7 @@ public:
 
 	static const SDL_PixelFormat* mFormat;
 	static void InitColorFormat(const SDL_PixelFormat* format);
+	static Color Evaluate1MinueSourceAlpha(const Color& source, const Color& destination);
 
 	static Color Black() { return Color(0, 0, 0, 255); }
 	static Color White() { return Color(255, 255, 255, 255); }
