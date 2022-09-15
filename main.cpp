@@ -15,7 +15,10 @@ int main(int argc, char* argv[])
 	theScreen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
 
 	Circle circle(Vec2D(theScreen.Width() / 2.0f, theScreen.Height() / 2.0f), 50.0f);
-	theScreen.Draw(circle, Color::Pink());
+	Triangle triangle(Vec2D(50, 50), Vec2D(100, 30), Vec2D(25, 100));
+	AARectangle rect(Vec2D(150, 30), Vec2D(200, 60));
+	theScreen.Draw(rect, Color::White(), true, Color::White());
+	theScreen.Draw(circle, Color::Pink(),true, Color::Pink());
 	theScreen.SwapScreen();
 
 	SDL_Event sdlEvent;
