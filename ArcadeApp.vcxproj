@@ -23,6 +23,7 @@
     <ClInclude Include="src\Games\BreakOut\BoundaryEdge.h" />
     <ClInclude Include="src\Games\BreakOut\BreakOut.h" />
     <ClInclude Include="src\Games\BreakOut\Excluder.h" />
+    <ClInclude Include="src\Games\BreakOut\Paddle.h" />
     <ClInclude Include="src\Games\Games.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\Graphics\Screen.h" />
@@ -47,6 +48,7 @@
     <ClCompile Include="src\App\App.cpp" />
     <ClCompile Include="src\Games\BreakOut\BreakOut.cpp" />
     <ClCompile Include="src\Games\BreakOut\Excluder.cpp" />
+    <ClCompile Include="src\Games\BreakOut\Paddle.cpp" />
     <ClCompile Include="src\Graphics\Color.cpp" />
     <ClCompile Include="src\Graphics\Screen.cpp" />
     <ClCompile Include="src\Graphics\ScreenBuffer.cpp" />

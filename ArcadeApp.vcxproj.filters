@@ -81,6 +81,9 @@
     <ClInclude Include="src\Games\BreakOut\BoundaryEdge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Games\BreakOut\Paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Vec2D.cpp">
@@ -138,6 +141,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Games\BreakOut\Excluder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Games\BreakOut\Paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
