@@ -48,6 +48,9 @@
     <ClInclude Include="src\App\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Scenes\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Vec2D.cpp">
