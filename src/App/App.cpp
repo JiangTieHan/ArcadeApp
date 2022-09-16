@@ -1,12 +1,10 @@
 #include "App.h"
 #include <SDL.h>
 #include "Screen.h";
-#include "Line2D.h"
-#include "Triangle.h"
-#include "AARectangle.h"
-#include "Circle.h"
 #include "ArcadeScene.h"
 #include "Scene.h"
+#include "GameScene.h"
+#include "BreakOut.h"
 
 App& App::Singleton()
 {
@@ -21,6 +19,13 @@ bool App::Init(uint32_t width, uint32_t height, uint32_t mag)
 	std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
 	PushScene(std::move(arcadeScene));
 
+	// Temporary
+	{
+		std::unique_ptr<BreakOut> breakOutGame = std::make_unique<BreakOut>();
+		std::unique_ptr<GameScene> breakOutScene = std::make_unique<GameScene>(std::move(breakOutGame));
+		PushScene(std::move(breakOutScene));
+	}
+
 	return mnoptrWindow != nullptr;
 }
 
@@ -28,10 +33,6 @@ void App::Run()
 {
 	if (mnoptrWindow)
 	{
-		Circle circle(Vec2D(mScreen.Width() / 2.0f, mScreen.Height() / 2.0f), 50.0f);
-		Triangle triangle(Vec2D(50, 50), Vec2D(100, 30), Vec2D(25, 100));
-		AARectangle rect(Vec2D(150, 30), Vec2D(200, 200));
-
 		bool running = true;
 
 		uint32_t lastTick = SDL_GetTicks();
