@@ -5,6 +5,7 @@
 #include "Triangle.h"
 #include "AARectangle.h"
 #include "Circle.h"
+#include "ArcadeScene.h"
 
 
 App& App::Singleton()
@@ -35,6 +36,9 @@ void App::Run()
 		uint32_t dt = 10;
 		uint32_t accumulator = 0;
 
+		std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
+		arcadeScene->Init();
+
 		while (running)
 		{
 			currentTick = SDL_GetTicks();
@@ -62,14 +66,14 @@ void App::Run()
 			while (accumulator >= dt)
 			{
 				// update current scene by dt;
+				arcadeScene->Update(dt);
 				std::cout << "Delta time step: " << dt << std::endl;
 
 				accumulator -= dt;
 			}
 
 			// Render
-			mScreen.Draw(rect, Color::White(), true, Color::Blue());
-			mScreen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
+			arcadeScene->Draw(mScreen);
 			mScreen.SwapScreen();
 		}
 	}
