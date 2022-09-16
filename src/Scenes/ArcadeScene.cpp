@@ -3,6 +3,7 @@
 #include "Circle.h"
 #include "Triangle.h"
 #include "AARectangle.h"
+#include "GameController.h"
 
 ArcadeScene::ArcadeScene()
 {
@@ -10,6 +11,17 @@ ArcadeScene::ArcadeScene()
 
 void ArcadeScene::Init()
 {
+	ButtonAction action;
+	action.key = GameController::ActionKey();
+	action.action = [](uint32_t dt, InputState state)
+	{
+		if (GameController::IsPressed(state))
+		{
+			std::cout << "Action button was pressed!" << std::endl;
+		}
+	};
+
+	mGameController.AddInputActionForKey(action);
 }
 
 void ArcadeScene::Update(uint32_t dt)

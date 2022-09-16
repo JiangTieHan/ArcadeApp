@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Screen.h"
+#include "InputController.h"
 #include <stdint.h>
 #include <vector>
 #include <memory>
@@ -27,4 +28,5 @@ private:
 	SDL_Window* mnoptrWindow;
 
 	std::vector<std::unique_ptr<Scene>> mSceneStack;
+	InputController mInputController;
 };

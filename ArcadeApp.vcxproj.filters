@@ -54,6 +54,15 @@
     <ClInclude Include="src\Scenes\ArcadeScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Input\InputAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\GameController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\InputController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Vec2D.cpp">
@@ -93,6 +102,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Scenes\ArcadeScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\GameController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\InputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
