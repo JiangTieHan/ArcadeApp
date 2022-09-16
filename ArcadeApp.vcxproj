@@ -20,7 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\App\App.h" />
-    <ClInclude Include="src\Games\BreakOut.h" />
+    <ClInclude Include="src\Games\BreakOut\BoundaryEdge.h" />
+    <ClInclude Include="src\Games\BreakOut\BreakOut.h" />
+    <ClInclude Include="src\Games\BreakOut\Excluder.h" />
     <ClInclude Include="src\Games\Games.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\Graphics\Screen.h" />
@@ -43,7 +45,8 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\App\App.cpp" />
-    <ClCompile Include="src\Games\BreakOut.cpp" />
+    <ClCompile Include="src\Games\BreakOut\BreakOut.cpp" />
+    <ClCompile Include="src\Games\BreakOut\Excluder.cpp" />
     <ClCompile Include="src\Graphics\Color.cpp" />
     <ClCompile Include="src\Graphics\Screen.cpp" />
     <ClCompile Include="src\Graphics\ScreenBuffer.cpp" />
@@ -130,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games\BreakOut;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games\BreakOut;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,7 +167,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games\BreakOut;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -181,7 +184,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\lib\SDL2_image-2.0.5\include;$(SolutionDir)\src\Games\BreakOut;$(SolutionDir)\src\Games;$(SolutionDir)\src\Input;$(SolutionDir)\src\Scenes;$(SolutionDir)\src\App;$(SolutionDir)\src\Shapes;$(SolutionDir)\src\Utils;$(SolutionDir)\src\Graphics;$(SolutionDir)\lib\SDL2-2.0.20\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
