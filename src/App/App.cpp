@@ -32,7 +32,6 @@ void App::Run()
 		Triangle triangle(Vec2D(50, 50), Vec2D(100, 30), Vec2D(25, 100));
 		AARectangle rect(Vec2D(150, 30), Vec2D(200, 200));
 
-		SDL_Event sdlEvent;
 		bool running = true;
 
 		uint32_t lastTick = SDL_GetTicks();
