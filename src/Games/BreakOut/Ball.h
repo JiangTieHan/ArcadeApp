@@ -16,6 +16,7 @@ public:
 	void Draw(Screen& screen);
 	void MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool limitToEdge);
 	void MoveTo(const Vec2D& point);
+	void Bounce(const BoundaryEdge& edge);
 
 	inline const AARectangle GetBoundingRect() const { return mBBox; }
 	inline void Stop() { mVelocity = Vec2D::ZERO; }
