@@ -1,0 +1,54 @@
+#include "Ball.h"
+#include "Utils.h"
+#include "Screen.h"
+#include "Circle.h"
+#include "BoundaryEdge.h"
+
+const float Ball::RADIUS = 5.0f;
+
+Ball::Ball() : Ball(Vec2D::ZERO, Ball::RADIUS)
+{
+}
+
+Ball::Ball(const Vec2D& pos, float radius) : mBBox(pos - Vec2D(radius, radius), radius * 2.0f, radius * 2.0f),
+mVelocity(Vec2D::ZERO)
+{
+}
+
+void Ball::Update(uint32_t dt)
+{
+	mBBox.MoveBy(mVelocity * MillisecondToSeconds(dt));
+}
+
+void Ball::Draw(Screen& screen)
+{
+	Circle circle = { mBBox.GetCenterPoint(), GetRadius() };
+	screen.Draw(circle, Color::Red(), true, Color::Red());
+}
+
+void Ball::MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool limitToEdge)
+{
+	if (edge.normal == DOWN_DIR)
+	{
+		mBBox.MoveTo(Vec2D(mBBox.GetTopLeftPoint().GetX(), edge.edge.GetP0().GetY() + mBBox.GetHeight()));
+	}
+	else if (edge.normal == UP_DIR)
+	{
+		mBBox.MoveTo(Vec2D(mBBox.GetTopLeftPoint().GetX(), edge.edge.GetP0().GetY() - mBBox.GetHeight()));
+	}
+	else if (edge.normal == RIGHT_DIR)
+	{
+		mBBox.MoveTo(Vec2D(edge.edge.GetP0().GetX() + edge.normal.GetX(), mBBox.GetTopLeftPoint().GetY()));
+	}
+	else if (edge.normal == LEFT_DIR)
+	{
+		mBBox.MoveTo(Vec2D(edge.edge.GetP0().GetX() - mBBox.GetWidth(), mBBox.GetTopLeftPoint().GetY()));
+	}
+
+	pointOnEdge = edge.edge.ClosesPoint(mBBox.GetCenterPoint(), limitToEdge);
+}
+
+void Ball::MoveTo(const Vec2D& point)
+{
+	mBBox.MoveTo(point - Vec2D(GetRadius(), GetRadius()));
+}
