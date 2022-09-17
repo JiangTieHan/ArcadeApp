@@ -1,7 +1,7 @@
 #include "Excluder.h"
 #include "Utils.h"
 #include <cmath>
-#include <assert.h>
+#include <cassert>
 
 Excluder::~Excluder()
 {
@@ -18,12 +18,14 @@ bool Excluder::HasCollided(const AARectangle& rect, BoundaryEdge& edge) const
 {
 	if (mAARect.Intersects(rect))
 	{
-		float yMin = fminf(mAARect.GetTopLeftPoint().GetY(), rect.GetTopLeftPoint().GetY());
-		float yMax = fmaxf(mAARect.GetBotRightPoint().GetY(), rect.GetBotRightPoint().GetY());
+		float yMin = mAARect.GetTopLeftPoint().GetY() >= (rect.GetTopLeftPoint().GetY()) ? mAARect.GetTopLeftPoint().GetY() : rect.GetTopLeftPoint().GetY();
+		float yMax = mAARect.GetBotRightPoint().GetY() <= rect.GetBotRightPoint().GetY() ? mAARect.GetBotRightPoint().GetY() : rect.GetBotRightPoint().GetY();
+
 		float ySize = yMax - yMin;
 
-		float xMin = fminf(mAARect.GetTopLeftPoint().GetX(), rect.GetTopLeftPoint().GetX());
-		float xMax = fmaxf(mAARect.GetBotRightPoint().GetY(), rect.GetBotRightPoint().GetX());
+		float xMin = mAARect.GetTopLeftPoint().GetX() >= rect.GetTopLeftPoint().GetX() ? mAARect.GetTopLeftPoint().GetX() : rect.GetTopLeftPoint().GetX();
+		float xMax = mAARect.GetBotRightPoint().GetX() <= rect.GetBotRightPoint().GetX() ? mAARect.GetBotRightPoint().GetX() : rect.GetBotRightPoint().GetX();
+
 		float xSize = xMax - xMin;
 
 		if (xSize > ySize)
@@ -39,7 +41,7 @@ bool Excluder::HasCollided(const AARectangle& rect, BoundaryEdge& edge) const
 		}
 		else
 		{
-			if (rect.GetCenterPoint().GetX() > mAARect.GetCenterPoint().GetX())
+			if (rect.GetCenterPoint().GetX() < mAARect.GetCenterPoint().GetX())
 			{
 				edge = mEdges[LEFT_EDGE];
 			}
@@ -48,8 +50,10 @@ bool Excluder::HasCollided(const AARectangle& rect, BoundaryEdge& edge) const
 				edge = mEdges[RIGHT_EDGE];
 			}
 		}
+
 		return true;
 	}
+
 	return false;
 }
 
@@ -60,12 +64,14 @@ Vec2D Excluder::GetCollisionOffset(const AARectangle& rect) const
 
 	if (HasCollided(rect, edge))
 	{
-		float yMin = fminf(mAARect.GetTopLeftPoint().GetY(), rect.GetTopLeftPoint().GetY());
-		float yMax = fmaxf(mAARect.GetBotRightPoint().GetY(), rect.GetBotRightPoint().GetY());
+		float yMin = mAARect.GetTopLeftPoint().GetY() >= (rect.GetTopLeftPoint().GetY()) ? mAARect.GetTopLeftPoint().GetY() : rect.GetTopLeftPoint().GetY();
+		float yMax = mAARect.GetBotRightPoint().GetY() <= rect.GetBotRightPoint().GetY() ? mAARect.GetBotRightPoint().GetY() : rect.GetBotRightPoint().GetY();
+
 		float ySize = yMax - yMin;
 
-		float xMin = fminf(mAARect.GetTopLeftPoint().GetX(), rect.GetTopLeftPoint().GetX());
-		float xMax = fmaxf(mAARect.GetBotRightPoint().GetY(), rect.GetBotRightPoint().GetX());
+		float xMin = mAARect.GetTopLeftPoint().GetX() >= rect.GetTopLeftPoint().GetX() ? mAARect.GetTopLeftPoint().GetX() : rect.GetTopLeftPoint().GetX();
+		float xMax = mAARect.GetBotRightPoint().GetX() <= rect.GetBotRightPoint().GetX() ? mAARect.GetBotRightPoint().GetX() : rect.GetBotRightPoint().GetX();
+
 		float xSize = xMax - xMin;
 
 		if (!isEqual(edge.normal.GetY(), 0))
@@ -99,22 +105,19 @@ const BoundaryEdge& Excluder::GetEdge(EdgeType edge) const
 	return mEdges[edge];
 }
 
+
 void Excluder::SetupEdges()
 {
-	mEdges[TOP_EDGE].edge = { mAARect.GetTopLeftPoint().GetX(), mAARect.GetTopLeftPoint().GetY(),
-	mAARect.GetBotRightPoint().GetX(), mAARect.GetTopLeftPoint().GetY() };
+	mEdges[TOP_EDGE].edge = { mAARect.GetTopLeftPoint().GetX(), mAARect.GetTopLeftPoint().GetY(), mAARect.GetBotRightPoint().GetX(), mAARect.GetTopLeftPoint().GetY() };
 	mEdges[TOP_EDGE].normal = UP_DIR;
 
-	mEdges[LEFT_EDGE].edge = { mAARect.GetTopLeftPoint().GetX(), mAARect.GetTopLeftPoint().GetY(),
-	mAARect.GetTopLeftPoint().GetX(), mAARect.GetBotRightPoint().GetY() };
+	mEdges[LEFT_EDGE].edge = { mAARect.GetTopLeftPoint().GetX(), mAARect.GetTopLeftPoint().GetY(), mAARect.GetTopLeftPoint().GetX(), mAARect.GetBotRightPoint().GetY() };
 	mEdges[LEFT_EDGE].normal = LEFT_DIR;
 
-	mEdges[BOTTOM_EDGE].edge = { mAARect.GetTopLeftPoint().GetX(), mAARect.GetBotRightPoint().GetY(),
-	mAARect.GetBotRightPoint().GetX(), mAARect.GetBotRightPoint().GetY() };
+	mEdges[BOTTOM_EDGE].edge = { mAARect.GetTopLeftPoint().GetX(), mAARect.GetBotRightPoint().GetY(), mAARect.GetBotRightPoint().GetX(), mAARect.GetBotRightPoint().GetY() };
 	mEdges[BOTTOM_EDGE].normal = DOWN_DIR;
 
-	mEdges[RIGHT_EDGE].edge = { mAARect.GetBotRightPoint().GetX(), mAARect.GetTopLeftPoint().GetY(),
-	mAARect.GetBotRightPoint().GetX(), mAARect.GetBotRightPoint().GetY() };
+	mEdges[RIGHT_EDGE].edge = { mAARect.GetBotRightPoint().GetX(), mAARect.GetTopLeftPoint().GetY(), mAARect.GetBotRightPoint().GetX(), mAARect.GetBotRightPoint().GetY() };
 	mEdges[RIGHT_EDGE].normal = RIGHT_DIR;
 
 	if (mReverseNormals)

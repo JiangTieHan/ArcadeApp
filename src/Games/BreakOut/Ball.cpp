@@ -6,13 +6,14 @@
 
 const float Ball::RADIUS = 5.0f;
 
-Ball::Ball() : Ball(Vec2D::ZERO, Ball::RADIUS)
+Ball::Ball() :Ball(Vec2D::ZERO, Ball::RADIUS)
 {
+
 }
 
-Ball::Ball(const Vec2D& pos, float radius) : mBBox(pos - Vec2D(radius, radius), radius * 2.0f, radius * 2.0f),
-mVelocity(Vec2D::ZERO)
+Ball::Ball(const Vec2D& pos, float radius) : mBBox(pos - Vec2D(radius, radius), radius * 2.0f, radius * 2.0f), mVelocity(Vec2D::ZERO)
 {
+
 }
 
 void Ball::Update(uint32_t dt)
@@ -22,8 +23,8 @@ void Ball::Update(uint32_t dt)
 
 void Ball::Draw(Screen& screen)
 {
-	Circle circle = { mBBox.GetCenterPoint(), GetRadius() };
-	screen.Draw(circle, Color::Red(), true, Color::Red());
+	Circle circ = { mBBox.GetCenterPoint(), GetRadius() };
+	screen.Draw(circ, Color::Red(), true, Color::Red());
 }
 
 void Ball::MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool limitToEdge)
@@ -45,17 +46,19 @@ void Ball::MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool 
 		mBBox.MoveTo(Vec2D(edge.edge.GetP0().GetX() - mBBox.GetWidth(), mBBox.GetTopLeftPoint().GetY()));
 	}
 
-	pointOnEdge = edge.edge.ClosesPoint(mBBox.GetCenterPoint(), limitToEdge);
-}
-
-void Ball::MoveTo(const Vec2D& point)
-{
-	mBBox.MoveTo(point - Vec2D(GetRadius(), GetRadius()));
+	pointOnEdge = edge.edge.ClosestPoint(mBBox.GetCenterPoint(), limitToEdge);
 }
 
 void Ball::Bounce(const BoundaryEdge& edge)
 {
 	Vec2D pointOnEdge;
+
 	MakeFlushWithEdge(edge, pointOnEdge, false);
+
 	mVelocity = mVelocity.Reflect(edge.normal);
+}
+
+void Ball::MoveTo(const Vec2D& point)
+{
+	mBBox.MoveTo(point - Vec2D(GetRadius(), GetRadius()));
 }

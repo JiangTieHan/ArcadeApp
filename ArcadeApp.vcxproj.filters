@@ -93,6 +93,9 @@
     <ClInclude Include="src\Games\BreakOut\Block.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Games\BreakOut\BreakoutGameLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utils\Vec2D.cpp">
@@ -162,6 +165,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Games\BreakOut\Block.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Games\BreakOut\BreakoutGameLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -26,10 +26,10 @@ bool Line2D::operator!=(const Line2D& other) const
 
 float Line2D::MinDistanceFrom(const Vec2D& p, bool limitToSegment) const
 {
-	return p.Distance(ClosesPoint(p, limitToSegment));
+	return p.Distance(ClosestPoint(p, limitToSegment));
 }
 
-Vec2D Line2D::ClosesPoint(const Vec2D& p, bool limitToSegment) const
+Vec2D Line2D::ClosestPoint(const Vec2D& p, bool limitToSegment) const
 {
 	Vec2D p0ToP = p - mP0;
 	Vec2D p0ToP1 = mP1 - mP0;

@@ -1,9 +1,11 @@
 #include "Block.h"
 #include "Screen.h"
 #include "Ball.h"
+#include "BoundaryEdge.h"
 
 Block::Block() : mOutlineColor(Color::White()), mFillColor(Color::White()), mHp(1)
 {
+
 }
 
 void Block::Init(const AARectangle& rect, int hp, const Color& outlineColor, const Color& fillColor)

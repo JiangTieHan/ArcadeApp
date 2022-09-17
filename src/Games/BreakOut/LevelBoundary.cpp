@@ -8,9 +8,10 @@ LevelBoundary::LevelBoundary(const AARectangle& boundary)
 
 bool LevelBoundary::HasCollided(const Ball& ball, BoundaryEdge& edge)
 {
-	for (int i = 0; i < NUM_EDGES; i++)
+	for (int i = 0; i < NUM_EDGES; ++i)
 	{
 		BoundaryEdge collisionEdge = mIncluder.GetEdge(static_cast<EdgeType>(i));
+
 		if (HasCollidedWithEdge(ball, collisionEdge))
 		{
 			edge = collisionEdge;

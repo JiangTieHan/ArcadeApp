@@ -55,16 +55,16 @@ Vec2D& Vec2D::Normalize()
 
 Vec2D Vec2D::ProjectOnto(const Vec2D& other) const
 {
-	Vec2D unitVec = other.GetUnitVec();
-	if (unitVec == Vec2D::ZERO) return Vec2D::ZERO;
-	return Dot(unitVec) * unitVec;
+	Vec2D unitVec2 = other.GetUnitVec();
+
+	float dot = Dot(unitVec2);
+
+	return unitVec2 * dot;
 }
 
-Vec2D Vec2D::Reflect(const Vec2D& normalVec) const
+Vec2D Vec2D::Reflect(const Vec2D& normal) const
 {
-	Vec2D unitNormVec = normalVec.GetUnitVec();
-	if (unitNormVec == Vec2D::ZERO) return Vec2D::ZERO;
-	return *this - 2 * ProjectOnto(normalVec);
+	return *this - 2 * ProjectOnto(normal);
 }
 
 void Vec2D::Rotate(float angle, const Vec2D& aroundPoint)

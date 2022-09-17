@@ -16,7 +16,7 @@ public:
 	bool operator== (const Line2D& other) const;
 	bool operator!= (const Line2D& other) const;
 	float MinDistanceFrom(const Vec2D& p, bool limitToSegment = false) const;
-	Vec2D ClosesPoint(const Vec2D& p, bool limitToSegment = false) const;
+	Vec2D ClosestPoint(const Vec2D& p, bool limitToSegment = false) const;
 	Vec2D Midpoint() const;
 	float Slope() const;
 	float Length() const;
