@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <vector>
 #include <memory>
+#include <string>
 
 struct SDL_Window;
 class Scene;
@@ -22,6 +23,8 @@ public:
 	void PushScene(std::unique_ptr<Scene> scene);
 	void PopScene();
 	Scene* TopScene();
+
+	static const std::string& GetBasePath();
 
 private:
 	Screen mScreen;

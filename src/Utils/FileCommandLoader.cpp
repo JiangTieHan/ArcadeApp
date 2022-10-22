@@ -1,8 +1,14 @@
+/*
+ * FileCommandLoader.cpp
+ *
+ *  Created on: Jan. 14, 2019
+ *      Author: serge
+ */
 #include "FileCommandLoader.h"
-#include "Color.h"
-#include "Vec2D.h"
 #include <fstream>
 #include <iostream>
+#include "Color.h"
+#include "Vec2D.h"
 
 void FileCommandLoader::AddCommand(const Command& command)
 {
@@ -14,6 +20,7 @@ bool FileCommandLoader::LoadFile(const std::string& filePath)
 	std::ifstream inFile;
 
 	inFile.open(filePath);
+
 	std::string line = "";
 
 	if (!inFile.is_open())
@@ -25,11 +32,13 @@ bool FileCommandLoader::LoadFile(const std::string& filePath)
 	while (!inFile.eof())
 	{
 		std::getline(inFile, line);
+
 		size_t commandPos = std::string::npos;
 
-		if ((commandPos) = line.find(":") != std::string::npos)
+		if ((commandPos = line.find(":")) != std::string::npos)
 		{
 			size_t dilimitPos = line.find_first_of(" ", commandPos);
+
 			if (dilimitPos == std::string::npos)
 			{
 				dilimitPos = line.length();
@@ -42,7 +51,7 @@ bool FileCommandLoader::LoadFile(const std::string& filePath)
 			std::string commandStr = line.substr(commandPos + 1, dilimitPos);
 			dilimitPos += 1;
 
-			for (size_t commandIndex = 0; commandIndex < mCommands.size(); commandIndex++)
+			for (size_t commandIndex = 0; commandIndex < mCommands.size(); ++commandIndex)
 			{
 				if (commandStr == mCommands[commandIndex].command)
 				{
@@ -63,20 +72,25 @@ bool FileCommandLoader::LoadFile(const std::string& filePath)
 						while (lineNum < totalLines)
 						{
 							std::getline(inFile, line);
-							if (line.empty()) continue;
+
+							if (line.empty())
+							{
+								continue;
+							}
 							else
 							{
 								ParseFuncParams params;
-								params.dilimitPos = 0;
+								params.dilimitPos = dilimitPos;
 								params.lineNum = lineNum;
 								params.line = line;
 								mCommands[commandIndex].parseFunc(params);
-								lineNum++;
+								++lineNum;
 							}
 						}
 					}
 				}
 			}
+
 		}
 	}
 	return true;
@@ -90,6 +104,8 @@ Color FileCommandLoader::ReadColor(const ParseFuncParams& params)
 	size_t lastSpacePos = nextSpacePos;
 	nextSpacePos = params.line.find_first_of(" ", lastSpacePos + 1);
 	int g = std::stoi(params.line.substr(lastSpacePos + 1, nextSpacePos - lastSpacePos));
+
+	lastSpacePos = nextSpacePos;
 	nextSpacePos = params.line.find_first_of(" ", lastSpacePos + 1);
 	int b = std::stoi(params.line.substr(lastSpacePos + 1, nextSpacePos - lastSpacePos));
 	int a = std::stoi(params.line.substr(nextSpacePos + 1));
@@ -123,3 +139,4 @@ char FileCommandLoader::ReadChar(const ParseFuncParams& params)
 {
 	return params.line.substr(params.dilimitPos + 1)[0];
 }
+

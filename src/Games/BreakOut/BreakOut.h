@@ -4,6 +4,7 @@
 #include "Ball.h"
 #include "LevelBoundary.h"
 #include "BreakoutGameLevel.h"
+#include <vector>
 
 class BreakOut : public Game
 {
@@ -15,9 +16,13 @@ public:
 
 private:
 	void ResetGame();
+
+	inline BreakoutGameLevel& GetCurrentLevel() { return mLevels[mCurrentLevel]; }
+
 	const Vec2D INITIAL_BALL_VEL = Vec2D(100, -100);
 	Paddle mPaddle;
 	Ball mBall;
 	LevelBoundary mLevelBoundary;
-	BreakoutGameLevel mLevel;
+	std::vector<BreakoutGameLevel> mLevels;
+	size_t mCurrentLevel;
 };
